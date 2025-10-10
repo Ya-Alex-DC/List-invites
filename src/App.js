@@ -1,30 +1,6 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { User } from "./components/user"
-
-// const fnc = (test, test3 = 1) => {
-// 	if (Array.isArray(test)) {
-// 		console.log('Да это масиив')
-// 	} else {
-// 		console.log(test, test3)
-// 	}
-// }
-// const fn1 = fnc([])
-// const fn2 = fnc('5', '3')
-// const fn3 = fnc(true)
-
-// console.log(fn2)
-
-// http://reqres.in/api/users
-
-// function getUser(name) {
-//     let names = name
-//     return function () {
-//         return names
-//     }
-// }
-// const user = getUser()
-// console.log(user(Lexa))
 
 function App() {
 	const [users, setUsers] = useState([])
@@ -36,45 +12,12 @@ function App() {
 	}
 
 	const addUsers = (id) => {
-	// 	setInvits(prev => (
-	// 	prev.includes(id) ? prev : [...prev, id]
-	// ))
-	setInvits(prev =>
-		prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
-	);
-	console.log(invits)
+		setInvits(prev =>
+			prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+		);
+		// console.log(invits)
 	}
 
-	// useEffect(() => {
-	// 	fetch('http://localhost:3500/data')
-	// 		.then(res => res.json())
-	// 		.then((json) => {
-	// 			setUsers(json)
-	// 			// console.log(json)
-	// 		}).catch(err => {
-	// 			console.warn(err)
-	// 			alert('Ошибка')
-	// 		})
-	// }, [])
-
-	// console.log(users)
-
-	// const title = () => {
-	// 	users.map(e => (e.json.title))
-	// }
-
-	// fetch('https://jsonplaceholder.typicode.com/todos/1')
-	//       .then(response => response.json())
-	//       .then(json => console.log(json))
-
-	// fetch('https://reqres.in/api/users')
-	// .then(res => res.json())
-	// .json(json => {
-	// 	console.log(json)
-	// })
-
-
-	// console.log(selectedForm)
 	return (
 		<div className="App">
 			<User
@@ -85,7 +28,7 @@ function App() {
 				addUsers={addUsers}
 				invits={invits}
 				setInvits={setInvits}
-				/>
+			/>
 		</div>
 	);
 }
