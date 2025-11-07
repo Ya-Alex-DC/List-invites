@@ -1,11 +1,22 @@
+import { OprosF } from '../type';
 
-export const Info = ({ setUsers, email, id, first_name, last_name, avatar, addUsers, invits }) => {
+interface infUsersProps extends OprosF {
+	invits: number[];
+	addUsers: (id: number) => void;
+	setUsers: React.Dispatch<React.SetStateAction<OprosF[]>>;
+	setInvits: React.Dispatch<React.SetStateAction<number[]>>
+}
 
-	const handleDelete = (id) => {
+
+export const Info: React.FC<infUsersProps> = ({ setUsers, email, id, first_name, last_name, avatar, addUsers, invits, setInvits }) => {
+
+	const handleDelete = (id: number): void => {
 		setUsers(prevUsers => prevUsers.filter(e => e.id !== id));
+		setInvits((prev: number[]) => prev.filter(u => u !== id))
 	};
 
 	const isInvited = invits.includes(id);
+
 	return (
 		<li className="user_block">
 			<div className="block_users">

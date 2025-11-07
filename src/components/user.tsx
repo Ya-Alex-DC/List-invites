@@ -1,10 +1,22 @@
 import { Info } from "./infUsers"
-export const User = ({ setUsers, users, value, onChangeValue, addUsers, invits, setInvits }) => {
+import { OprosF } from '../type';
+
+interface UserProps {
+	setUsers: React.Dispatch<React.SetStateAction<OprosF[]>>;
+	users: OprosF[];
+	value: string;
+	onChangeValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	addUsers: (id: number) => void;
+	invits: number[];
+	setInvits: React.Dispatch<React.SetStateAction<number[]>>;
+}
+
+export const User: React.FC<UserProps> = ({ setUsers, users, value, onChangeValue, addUsers, invits, setInvits }) => {
 
 	const refresh = () => {
 		fetch('http://localhost:3500/data')
 			.then(res => res.json())
-			.then((json) => {
+			.then((json: OprosF[]) => {
 				setInvits([])
 				setUsers(json)
 				// console.log(json)
